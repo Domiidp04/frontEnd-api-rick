@@ -1,0 +1,26 @@
+<div class="container py-5">
+  <div class="card mt-4 mx-auto" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img [src]="character.image" class="card-img" alt="{{ character.name }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ character.name }}</h5>
+          <p class="card-text"><small class="text-muted">Status: {{ character.status }}</small></p>
+          <p class="card-text">Species: {{ character.species }}</p>
+          <p class="card-text">Gender: {{ character.gender }}</p>
+          <p class="card-text">Origin: {{ character.origin.name }}</p>
+          <p class="card-text">Location: {{ character.location.name }}</p>
+          <p class="card-text">Episodes: {{ character.episode.length }}</p>
+          <p class="card-text"><small class="text-muted">Created: {{ character.created }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Botón para volver a la página principal -->
+  <div class="mt-4 text-center pb-3">
+    <a routerLink="/home" class="btn btn-primary">Volver a la página principal</a>
+  </div>
+</div>
