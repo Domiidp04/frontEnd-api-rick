@@ -1,5 +1,6 @@
+import { Location } from "./Location";
+
 export class Character{
-[x: string]: any;
     constructor(
     public id: number,
     public name: string,
@@ -7,9 +8,12 @@ export class Character{
     public species: string,
     public type: string,
     public gender: string,
-    public image: string,
     public origin: Location,
-    public location: Location,
+    public image: string,
+    public episode: string[],
+    public url: string,
+    public created: string,
+    public location: Location | undefined,
     ){}
 
 

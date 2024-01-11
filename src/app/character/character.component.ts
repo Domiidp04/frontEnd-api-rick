@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../services/character.service';
+import { Character } from '../model/Character';
+import { Location } from '../model/Location';
 
 @Component({
   selector: 'app-character',
@@ -8,7 +10,7 @@ import { CharacterService } from '../services/character.service';
   styleUrls: ['./character.component.css']
 })
 export class CharacterComponent implements OnInit {
-  character: any;
+  character?: Character;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,4 +28,6 @@ export class CharacterComponent implements OnInit {
         .subscribe(character => this.character = character);
     }
   }
+
+  
 }
