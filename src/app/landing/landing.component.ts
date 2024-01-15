@@ -32,13 +32,13 @@ export class LandingComponent implements OnInit {
   }
   
 
-  // Function to load next page
+  // Funcion boton next
   loadNextPage(): void {
     this.characterService.nextPage();
     this.llenarData();
   }
 
-  // Function to load previous page
+  // Funcion boton load
   loadPrevPage(): void {
     this.characterService.prevPage();
     this.llenarData();

@@ -7,8 +7,8 @@ import { Character } from '../model/Character';
   providedIn: 'root'
 })
 export class CharacterService {
-  private baseUrl = 'https://rickandmortyapi.com/api/character';
-  private currentPage = 1;
+  private baseUrl: string = 'https://rickandmortyapi.com/api/character';
+  private currentPage:number = 1;
 
   constructor(private http: HttpClient) { }
 
