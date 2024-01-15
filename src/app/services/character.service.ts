@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { Response } from '../model/Response';
+import { Character } from '../model/Character';
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
-  private baseUrl = 'https://rickandmortyapi.com/api/character';
-  private currentPage = 1;
+  private baseUrl: string = 'https://rickandmortyapi.com/api/character';
+  private currentPage:number = 1;
 
   constructor(private http: HttpClient) { }
 
@@ -26,9 +27,9 @@ export class CharacterService {
     }
   }
 
-  public getCharacter(id: number): Observable<any> {
+  public getCharacter(id: number): Observable<Character> {
     const url = this.baseUrl+`/${id}`;
-    return this.http.get(url);
+    return this.http.get<Character>(url);
   }
   
   

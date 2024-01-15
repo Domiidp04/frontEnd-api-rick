@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Character } from '../model/Character';
 import { Router } from '@angular/router';
 import { CharacterService } from '../services/character.service';
+import { Information } from '../model/Information';
 
 @Component({
   selector: 'app-landing',
@@ -12,7 +13,7 @@ export class LandingComponent implements OnInit {
   
   titulo:string = "Data Api Rick - DDP";
   data: Character[] = [];
-  pageInfo: any;  // Add this line to store page information
+  pageInfo?: Information;  
   page: number = 1;
 
   constructor(private characterService:CharacterService , private router: Router) {}
@@ -24,7 +25,6 @@ export class LandingComponent implements OnInit {
 
   llenarData(){
     this.characterService.getData().subscribe( data => {
-      console.log(data);  // Log the response to the console
       const { info, results } = data;
       this.data = results;
       this.pageInfo = info;
@@ -32,21 +32,18 @@ export class LandingComponent implements OnInit {
   }
   
 
-  // Function to load next page
+  // Funcion boton next
   loadNextPage(): void {
     this.characterService.nextPage();
     this.llenarData();
   }
 
-  // Function to load previous page
+  // Funcion boton load
   loadPrevPage(): void {
     this.characterService.prevPage();
     this.llenarData();
   }
 
-  showCharacterDetails(characterId: number): void {
-    this.router.navigate(['character', characterId]);
-  }
 
  
 }

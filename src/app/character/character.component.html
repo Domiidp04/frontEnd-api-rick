@@ -1,26 +1,45 @@
 <div class="container py-5">
-  <div class="card mt-4 mx-auto" style="max-width: 540px;">
+  <div class="card mt-4 mx-auto" style="max-width: 580px;">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img [src]="character.image" class="card-img" alt="{{ character.name }}">
+        <img [src]="character?.image" class="card-img" alt="{{ character?.name }}">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">{{ character.name }}</h5>
-          <p class="card-text"><small class="text-muted">Status: {{ character.status }}</small></p>
-          <p class="card-text">Species: {{ character.species }}</p>
-          <p class="card-text">Gender: {{ character.gender }}</p>
-          <p class="card-text">Origin: {{ character.origin.name }}</p>
-          <p class="card-text">Location: {{ character.location.name }}</p>
-          <p class="card-text">Episodes: {{ character.episode.length }}</p>
-          <p class="card-text"><small class="text-muted">Created: {{ character.created }}</small></p>
+          <h5 class="card-title">{{ character?.name }}</h5>
+          <p class="card-text"><small class="text-muted">Status: {{ character?.status }}</small></p>
+          <p class="card-text">Species: {{ character?.species }}</p>
+          <p class="card-text">Gender: {{ character?.gender }}</p>
+          <p class="card-text">Origin Name: {{ character?.origin?.name }}</p>
+          <p class="card-text" *ngIf="character?.origin?.url">Origin Url: 
+            <a [href]="character?.origin?.url" target="_blank">{{character?.origin?.url}}</a>
+          </p>
+          <p class="card-text" *ngIf="character?.type">Type: {{ character?.type }}</p>
+          <p class="card-text" *ngIf="character?.location?.name">
+            Location: {{character?.location?.name}}
+          </p>
+          <p class="card-text" *ngIf="character?.location?.url">
+            Location url: 
+            <a [href]="character?.location?.url" target="_blank">{{ character?.location?.url }}</a>
+          </p>
+          <p class="card-text">Episodes: 
+            <ng-container *ngIf="character?.episode">
+              <ng-container *ngFor="let episode of character?.episode; let last = last">
+                <a [href]="episode" target="_blank">{{episode}}</a>
+                <br *ngIf="!last" />
+              </ng-container>
+            </ng-container>
+          </p>
+          <p class="card-text">URL: 
+            <a [href]="character?.url" target="_blank">{{character?.url}}</a>
+          </p>
+          <p class="card-text"><small class="text-muted">Created: {{ character?.created }}</small></p>
         </div>
       </div>
     </div>
   </div>
-  
-  <!-- Botón para volver a la página principal -->
+
   <div class="mt-4 text-center pb-3">
-    <a routerLink="/home" class="btn btn-primary">Volver a la página principal</a>
+    <a routerLink="/home" class="btn btn-primary">Go to Home</a>
   </div>
-</div>
+</div> 
